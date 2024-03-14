@@ -1,6 +1,12 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
+locals {
+  name = "pet-nulls"
+  petName = "AHA!-${component.pet.name}"
+}
+
+
 variable "prefix" {
   type = string
 }
@@ -12,12 +18,12 @@ variable "instances" {
 required_providers {
   random = {
     source  = "hashicorp/random"
-    version = "~> 3.5.1"
+    version = "~> 3.3.2"
   }
 
   null = {
     source  = "hashicorp/null"
-    version = "~> 3.2.2"
+    version = "~> 3.1.1"
   }
 }
 
@@ -28,7 +34,7 @@ component "pet" {
   source = "./pet"
 
   inputs = {
-    prefix = var.prefix
+    prefix = "${local.name}-${var.prefix}"
   }
 
   providers = {
@@ -40,7 +46,7 @@ component "nulls" {
   source = "./nulls"
 
   inputs = {
-    pet       = component.pet.name
+    pet       = local.petName
     instances = var.instances
   }
 

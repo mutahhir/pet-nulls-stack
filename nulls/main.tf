@@ -10,6 +10,11 @@ terraform {
   }
 }
 
+locals {
+  name = "aha!"
+
+}
+
 variable "pet" {
   type = string
 }
@@ -29,3 +34,7 @@ resource "null_resource" "this" {
 output "ids" {
   value = [for n in null_resource.this: n.id]
 }
+
+output "name" {
+  value = local.name
+  }
