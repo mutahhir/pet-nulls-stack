@@ -1,12 +1,6 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-locals {
-  name = "pet-nulls"
-  petName = "AHA!-${component.pet.name}"
-}
-
-
 variable "prefix" {
   type = string
 }
@@ -34,7 +28,7 @@ component "pet" {
   source = "./pet"
 
   inputs = {
-    prefix = "${local.name}-${var.prefix}"
+    prefix = var.prefix
   }
 
   providers = {
@@ -46,7 +40,7 @@ component "nulls" {
   source = "./nulls"
 
   inputs = {
-    pet       = local.petName
+    pet       = component.pet.name
     instances = var.instances
   }
 
