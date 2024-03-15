@@ -11,7 +11,7 @@ terraform {
 }
 
 locals {
-  length = 3
+  length = -1
 }
 
 
