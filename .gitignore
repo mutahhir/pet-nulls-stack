@@ -1,0 +1,4 @@
+.terraform/providers/registry.terraform.io/hashicorp
+.terraform/states
+planfile
+.terraform/modules
