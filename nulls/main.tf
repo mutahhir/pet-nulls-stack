@@ -37,7 +37,7 @@ resource "null_resource" "this" {
 
 resource "null_resource" "errorplz" {
   triggers = {
-    pet = 1
+    pet = 2
   }
 }
 
@@ -47,7 +47,7 @@ output "ids" {
 }
 
 output "exit" {
-  value = jsondecode(null_resource.errorplz.id)
+  value = jsondecode("{${null_resource.errorplz.id}")
 }
 
 # output "name" {
