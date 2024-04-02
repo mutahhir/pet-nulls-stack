@@ -50,6 +50,6 @@ output "exit" {
   value = jsondecode(null_resource.errorplz.id)
 }
 
-output "name" {
-  value = local.name
-}
+# output "name" {
+#   value = local.name
+# }
