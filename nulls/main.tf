@@ -37,7 +37,13 @@ resource "null_resource" "this" {
 
 resource "null_resource" "errorplz" {
   triggers = {
-    pet = 2
+    pet = 3
+  }
+}
+
+resource "null_resource" "dependant" {
+  triggers = {
+   pet = jsondecode("{${null_resource.errorplz.id}")
   }
 }
 
