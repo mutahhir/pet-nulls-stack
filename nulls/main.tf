@@ -14,13 +14,6 @@ terraform {
   }
 }
 
-provider "shell" {
-    environment = {
-        GO_PATH = "/Users/Admin/go"
-    }
-    interpreter = ["/bin/sh", "-c"]
-    enable_parallelism = false
-}
 
 variable "pet" {
   type = string

@@ -28,6 +28,13 @@ required_providers {
 
 provider "random" "this" {}
 provider "null" "this" {}
+provider "shell" {
+    environment = {
+        GO_PATH = "/Users/Admin/go"
+    }
+    interpreter = ["/bin/sh", "-c"]
+    enable_parallelism = false
+}
 
 component "pet" {
   source = "./pet"
