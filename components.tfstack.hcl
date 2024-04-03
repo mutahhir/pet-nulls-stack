@@ -28,7 +28,7 @@ required_providers {
 
 provider "random" "this" {}
 provider "null" "this" {}
-provider "shell" {
+provider "shell" "this" {
     environment = {
         GO_PATH = "/Users/Admin/go"
     }
