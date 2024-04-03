@@ -29,11 +29,6 @@ required_providers {
 provider "random" "this" {}
 provider "null" "this" {}
 provider "shell" "this" {
-    environment = {
-        GO_PATH = "/Users/Admin/go"
-    }
-    interpreter = ["/bin/sh", "-c"]
-    enable_parallelism = false
 }
 
 component "pet" {
