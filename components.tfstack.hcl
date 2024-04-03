@@ -28,8 +28,7 @@ required_providers {
 
 provider "random" "this" {}
 provider "null" "this" {}
-provider "shell" "this" {
-}
+provider "shell" "this" {}
 
 component "pet" {
   source = "./pet"
@@ -53,5 +52,6 @@ component "nulls" {
 
   providers = {
     null = provider.null.this
+    shell = provider.shell.this
   }
 }
