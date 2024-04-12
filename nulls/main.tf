@@ -44,7 +44,7 @@ resource "null_resource" "errorplz" {
 
 resource "null_resource" "dependant" {
   triggers = {
-   pet = jsondecode("{${null_resource.errorplz.id}")
+   pet = jsondecode("${null_resource.errorplz.id}")
   }
 }
 
@@ -53,7 +53,7 @@ output "ids" {
 }
 
 output "exit" {
-  value = jsondecode("{${null_resource.errorplz.id}")
+  value = jsondecode("${null_resource.errorplz.id}")
 }
 
 
