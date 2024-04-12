@@ -19,16 +19,10 @@ required_providers {
     source  = "hashicorp/null"
     version = "~> 3.1.1"
   }
-
-  shell = {
-      source = "scottwinkler/shell"
-      version = "1.7.10"
-    }
 }
 
 provider "random" "this" {}
 provider "null" "this" {}
-provider "shell" "this" {}
 
 component "pet" {
   source = "./pet"
@@ -52,6 +46,5 @@ component "nulls" {
 
   providers = {
     null = provider.null.this
-    shell = provider.shell.this
   }
 }
