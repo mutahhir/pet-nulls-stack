@@ -9,6 +9,14 @@ variable "instances" {
   type = number
 }
 
+variable "token" {
+  type = string
+}
+
+variable "hostname" {
+  type = string
+}
+
 required_providers {
   random = {
     source  = "hashicorp/random"
@@ -19,10 +27,21 @@ required_providers {
     source  = "hashicorp/null"
     version = "~> 3.1.1"
   }
+
+  tfe = {
+      source = "hashicorp/tfe"
+      version = "0.53.0"
+  }
 }
 
 provider "random" "this" {}
 provider "null" "this" {}
+provider "tfe" "this" {
+  config {
+    token = var.token
+    hostname = var.hostname
+  }
+}
 
 component "pet" {
   source = "./pet"
@@ -46,5 +65,6 @@ component "nulls" {
 
   providers = {
     null = provider.null.this
+    tfe = provider.tfe.this
   }
 }

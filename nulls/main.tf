@@ -7,9 +7,13 @@ terraform {
       source = "hashicorp/null"
       version = "3.1.1"
     }
+
+    tfe = {
+      source = "hashicorp/tfe"
+      version = "0.53.0"
+    }
   }
 }
-
 
 variable "pet" {
   type = string
@@ -25,6 +29,15 @@ resource "null_resource" "this" {
   triggers = {
     pet = var.pet
   }
+}
+
+data "tfe_organization" "my_org" {
+  name = "hashicorp"
+}
+
+resource "tfe_workspace" "tester" {
+  name       = "pet-nulls-tester"
+  organization = data.tfe_organization.my_org.id
 }
 
 # resource "null_resource" "dns_check" {
