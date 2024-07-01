@@ -6,6 +6,7 @@ deployment "simple" {
     prefix           = "simple"
     instances        = 1
     hostname = "foo"
+    token = "bar"
   }
 }
 
@@ -14,6 +15,7 @@ deployment "complex" {
     prefix           = "complex"
     instances        = 3
     hostname = "foo"
+    token = "bar"
     
   }
 }
