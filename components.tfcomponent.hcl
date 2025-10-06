@@ -19,10 +19,16 @@ required_providers {
     source  = "hashicorp/null"
     version = "~> 3.2.2"
   }
+
+  bufo = {
+    source  = "austinvalle/bufo"
+    version = "~> 2.1.0"
+  }
 }
 
 provider "random" "this" {}
 provider "null" "this" {}
+provider "bufo" "this" {}
 
 component "pet" {
   source = "./pet"
@@ -46,5 +52,6 @@ component "nulls" {
 
   providers = {
     null = provider.null.this
+    bufo = provider.bufo.this
   }
 }
