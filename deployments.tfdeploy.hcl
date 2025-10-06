@@ -2,8 +2,13 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 
-deployment_group "default" {
+deployment_group "simple" {
 }
+
+deployment_group "complex" {
+
+}
+
 
 deployment "simple" {
   inputs = {
@@ -11,7 +16,7 @@ deployment "simple" {
     instances        = 1
   }
 
-  deployment_group = deployment_group.default
+  deployment_group = deployment_group.simple
 }
 
 deployment "complex" {
@@ -20,5 +25,5 @@ deployment "complex" {
     instances        = 3
   }
 
-  deployment_group = deployment_group.default
+  deployment_group = deployment_group.complex
 }
