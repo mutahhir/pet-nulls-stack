@@ -30,7 +30,6 @@ resource "null_resource" "this" {
     action_trigger {
       events  = [after_create]
       actions = [action.bufo_print.success]
-
     }
   }
 
@@ -39,9 +38,13 @@ resource "null_resource" "this" {
   }
 }
 
+locals {
+  secret_name = sensitive("bufo-the-builder")
+}
+
 action "bufo_print" "success" {
   config {
-    name = "bufo-the-builder"
+    name = local.secret_name
   }
 }
 
