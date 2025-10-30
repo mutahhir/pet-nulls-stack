@@ -24,11 +24,17 @@ required_providers {
     source  = "austinvalle/bufo"
     version = "~> 2.1.0"
   }
+
+  tfcoremock = {
+    source = "hashicorp/tfcoremock"
+    version = "0.6.0-beta1"
+  }
 }
 
 provider "random" "this" {}
 provider "null" "this" {}
 provider "bufo" "this" {}
+provider "tfcoremock" "this" {}
 
 component "pet" {
   source = "./pet"
@@ -53,5 +59,6 @@ component "nulls" {
   providers = {
     null = provider.null.this
     bufo = provider.bufo.this
+    tfcoremock = provider.tfcoremock.this
   }
 }

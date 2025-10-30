@@ -12,6 +12,11 @@ terraform {
       source  = "austinvalle/bufo"
       version = "2.1.0"
     }
+
+    tfcoremock = {
+      source  = "hashicorp/tfcoremock"
+      version = "0.6.0-beta1"
+    }
   }
 }
 
@@ -21,6 +26,23 @@ variable "pet" {
 
 variable "instances" {
   type = number
+}
+
+action "bufo_print" "meh" {
+  config {
+    name = local.secret_name
+  }
+}
+
+resource "tfcoremock_simple_resource" "this" {
+  id = "defer-me"
+
+  lifecycle {
+    action_trigger {
+      events  = [before_create]
+      actions = [action.bufo_print.meh]
+    }
+  }
 }
 
 resource "null_resource" "this" {
