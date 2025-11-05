@@ -13,10 +13,10 @@ terraform {
       version = "2.1.0"
     }
 
-    tfcoremock = {
-      source  = "hashicorp/tfcoremock"
-      version = "0.6.0-beta2"
-    }
+    #   tfcoremock = {
+    #     source  = "hashicorp/tfcoremock"
+    #     version = "0.6.0-beta2"
+    #   }
   }
 }
 
