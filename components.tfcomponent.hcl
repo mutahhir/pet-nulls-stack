@@ -27,7 +27,7 @@ required_providers {
 
   tfcoremock = {
     source = "hashicorp/tfcoremock"
-    version = "0.6.0-beta1"
+    version = "0.6.0-beta2"
   }
 }
 
