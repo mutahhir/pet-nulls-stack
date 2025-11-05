@@ -34,16 +34,16 @@ action "bufo_print" "meh" {
   }
 }
 
-resource "tfcoremock_simple_resource" "this" {
-  id = "defer-me"
-
-  lifecycle {
-    action_trigger {
-      events  = [before_create]
-      actions = [action.bufo_print.meh]
-    }
-  }
-}
+# resource "tfcoremock_simple_resource" "this" {
+#   id = "defer-me"
+#
+#   lifecycle {
+#     action_trigger {
+#       events  = [before_create]
+#       actions = [action.bufo_print.meh]
+#     }
+#   }
+# }
 
 resource "null_resource" "this" {
   count = var.instances
