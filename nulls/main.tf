@@ -29,6 +29,7 @@ variable "instances" {
 }
 
 action "bufo_print" "meh" {
+  count = 3
   config {
     name = local.secret_name
   }
@@ -51,7 +52,7 @@ resource "null_resource" "this" {
   lifecycle {
     action_trigger {
       events  = [after_create]
-      actions = [action.bufo_print.success]
+      actions = [action.bufo_print.success["true-success"]]
     }
   }
 
@@ -61,10 +62,12 @@ resource "null_resource" "this" {
 }
 
 locals {
-  secret_name = sensitive("bufo-the-builder")
+  secret_name    = sensitive("bufo-the-builder")
+  success_levels = toset(["true-success", "popularity", "bufo-success"])
 }
 
 action "bufo_print" "success" {
+  for_each = local.success_levels
   config {
     name = local.secret_name
   }

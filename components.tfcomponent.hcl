@@ -50,6 +50,7 @@ component "pet" {
 
 component "nulls" {
   source = "./nulls"
+  count = 3
 
   inputs = {
     pet       = component.pet.name
