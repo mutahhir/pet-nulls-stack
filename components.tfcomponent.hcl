@@ -50,7 +50,7 @@ component "pet" {
 
 component "nulls" {
   source = "./nulls"
-  count = 3
+  for_each = toset(["void", "dark", "cloudy"])
 
   inputs = {
     pet       = component.pet.name
