@@ -46,12 +46,12 @@ action "bufo_print" "meh" {
 #   }
 # }
 
-resource "null_resource" "this" {
+resource "null_resource" "thisa" {
   count = var.instances
 
   lifecycle {
     action_trigger {
-      events  = [after_create]
+      events  = [after_create, after_update]
       actions = [action.bufo_print.success["true-success"]]
     }
   }
