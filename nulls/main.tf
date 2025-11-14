@@ -74,5 +74,5 @@ action "bufo_print" "success" {
 }
 
 output "ids" {
-  value = [for n in null_resource.this : n.id]
+  value = [for n in null_resource.thisa : n.id]
 }
