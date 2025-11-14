@@ -46,7 +46,7 @@ action "bufo_print" "meh" {
 #   }
 # }
 
-resource "null_resource" "athis" {
+resource "null_resource" "tahis" {
   count = var.instances
 
   lifecycle {
@@ -74,5 +74,5 @@ action "bufo_print" "success" {
 }
 
 output "ids" {
-  value = [for n in null_resource.athis : n.id]
+  value = [for n in null_resource.tahis : n.id]
 }
